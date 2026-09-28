@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vijay P V - Portfolio</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#home" class="logo">Vijay P V</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <p class="hero-hello">Hello, I'm</p>
+        <h1>Vijay P V</h1>
+        <h2>Python Full Stack Developer</h2>
+        <p class="hero-text">
+            I build web applications with Python and Django, and I'm
+            learning to turn ideas into complete, working products.
+        </p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="https://github.com/VIJAYPV2003" class="btn btn-outline" target="_blank">GitHub</a>
+        </div>
+    </header>
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <p class="about-text">
+            I'm a B.Tech Computer Science graduate currently training in
+            Python full stack development. I enjoy building web applications
+            with Django, and I'm working on projects that I'll showcase here.
+        </p>
+    </section>
+
+    <section id="skills" class="section section-alt">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            {% for skill in skills %}
+                <span class="skill-tag">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </section>
+    <section id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                <div class="project-tech">
+                    {% for t in project.tech %}
+                        <span class="tech-tag">{{ t }}</span>
+                    {% endfor %}
+                </div>
+                <div class="project-links">
+                    {% if project.github %}
+                        <a href="{{ project.github }}" target="_blank">GitHub</a>
+                    {% endif %}
+                    {% if project.live_demo %}
+                        <a href="{{ project.live_demo }}" target="_blank">Live Demo</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section id="contact" class="section section-alt">
+        <h2 class="section-title">Contact</h2>
+        <p class="about-text">
+            I'm open to fresher opportunities in Python and Django development.
+            Feel free to reach out.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:youremail@example.com" class="btn btn-primary">Email Me</a>
+            <a href="https://www.linkedin.com/in/vijay-p-v-0a4723373" class="btn btn-outline" target="_blank">LinkedIn</a>
+            <a href="https://github.com/VIJAYPV2003" class="btn btn-outline" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Vijay P V. Built with Python and Django.</p>
+    </footer>
+</body>
+</html>
